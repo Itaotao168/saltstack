@@ -1,0 +1,68 @@
+base:
+  '*':
+    - init.init-all
+prod:
+  'cm.dlgq.com':
+    - modules.bigdata.appendjava2cm
+    - modules.ntpd-server.install
+    - modules.scala.install
+    - modules.openjdk.remove
+    - modules.jdk.install
+  'node61.dlgq.com':
+    - modules.ntpd-client.install
+    - modules.scala.install
+    - modules.openjdk.remove
+    - modules.jdk.install
+    - modules.bigdata.appendjava2agent
+    - modules.bigdata.zookeeper.config
+  'node63.dlgq.com':
+    - modules.ntpd-client.install
+    - modules.scala.install
+    - modules.openjdk.remove
+    - modules.jdk.install
+    - modules.bigdata.appendjava2agent
+    - modules.bigdata.zookeeper.config
+  'node64.dlgq.com':
+    - modules.ntpd-client.install
+    - modules.scala.install
+    - modules.openjdk.remove
+    - modules.jdk.install
+    - modules.bigdata.appendjava2agent
+    - modules.bigdata.zookeeper.config
+  'node65.dlgq.com':
+    - modules.ntpd-client.install
+    - modules.scala.install
+    - modules.openjdk.remove
+    - modules.jdk.install
+    - modules.bigdata.appendjava2agent
+    - modules.bigdata.zookeeper.config
+    - modules.bigdata.kafka.config
+  'node66.dlgq.com':
+    - modules.ntpd-client.install
+    - modules.scala.install
+    - modules.openjdk.remove
+    - modules.jdk.install
+    - modules.bigdata.appendjava2agent
+    - modules.bigdata.zookeeper.config
+    - modules.bigdata.kafka.config
+  'node67.dlgq.com':
+    - modules.ntpd-client.install
+    - modules.scala.install
+    - modules.openjdk.remove
+    - modules.jdk.install
+    - modules.bigdata.appendjava2agent
+    - modules.bigdata.kafka.config
+  'node68.dlgq.com':
+    - modules.ntpd-client.install
+    - modules.scala.install
+    - modules.openjdk.remove
+    - modules.jdk.install
+    - modules.bigdata.appendjava2agent
+    - modules.bigdata.kafka.config
+  'node69.dlgq.com':
+    - modules.ntpd-client.install
+    - modules.scala.install
+    - modules.openjdk.remove
+    - modules.jdk.install
+    - modules.bigdata.appendjava2agent
+    - modules.bigdata.kafka.config

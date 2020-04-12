@@ -1,0 +1,5 @@
+[base]
+name=CentOS-7
+baseurl=http://192.168.10.4:8087/base
+enabled=1
+gpgcheck=0
