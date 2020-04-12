@@ -1,0 +1,9 @@
+driftfile /var/lib/ntp/drift
+restrict 127.0.0.1
+restrict -6 ::1
+server 10.10.0.62
+restrict 10.10.0.62 nomodify notrap noquery
+server  127.127.1.0     # local clock
+fudge   127.127.1.0 stratum 10
+includefile /etc/ntp/crypto/pw
+keys /etc/ntp/keys

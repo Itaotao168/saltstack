@@ -1,0 +1,5 @@
+[docker]
+name=docker local repo
+baseurl=file:///var/www/html/docker
+enabled=1
+gpgcheck=0

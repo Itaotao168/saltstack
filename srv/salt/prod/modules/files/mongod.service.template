@@ -1,0 +1,16 @@
+[Unit]
+Description=MongoDB database server
+After=network.target
+After=syslog.target
+
+[Service]
+Type=forking
+User=mongo
+KillMode=process
+ExecStart=/usr/local/mongodb/bin/mongod -f /usr/local/mongodb/bin/mongodb.conf
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/usr/local/mongodb/bin/mongod --shutdown -f /usr/local/mongodb/bin/mongodb.conf
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

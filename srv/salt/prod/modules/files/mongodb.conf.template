@@ -1,0 +1,6 @@
+dbpath= {{ MONGODB_PATH }}/data
+logpath={{ MONGODB_PATH }}/logs/mongodb.log
+port=27017
+fork=true
+bind_ip={{ grains['fqdn_ip4'][0] }},127.0.0.1
+maxConns=10000

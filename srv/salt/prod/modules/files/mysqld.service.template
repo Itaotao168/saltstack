@@ -1,0 +1,25 @@
+[Unit]
+Description=MySQL Server
+Documentation=man:mysqld(8)
+Documentation=http://dev.mysql.com/doc/refman/en/using-systemd.html
+After=network.target
+After=syslog.target
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+User={{ MySQL_USER }}
+Group={{ MySQL_USER }}
+Type=forking
+PIDFile=/usr/local/mysql/mysqld.pid
+
+TimeoutSec=0
+PermissionsStartOnly=true
+ExecStart=/usr/local/mysql/bin/mysqld --daemonize --pid-file=/usr/local/mysql/mysqld.pid $MYSQLD_OPTS
+
+EnvironmentFile=-/etc/sysconfig/mysql
+LimitNOFILE = 65535
+Restart=on-failure
+RestartPreventExitStatus=1
+PrivateTmp=false

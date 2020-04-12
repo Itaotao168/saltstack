@@ -1,0 +1,1 @@
+OPTIONS="-g -l /var/log/ntpstats/ntpd.log"
