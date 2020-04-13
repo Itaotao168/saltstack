@@ -26,4 +26,5 @@ include:
   - init.geturl-config
 ### 关闭透明大页
   # Notice: can only be used to initialize a new server
-  - init.transparent_hugepage
+  #- init.transparent_hugepage
+  - init.disable_thpage
