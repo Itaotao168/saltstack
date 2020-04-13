@@ -22,6 +22,8 @@ include:
 ### 配置提示信息
   - init.tty-init
   - init.tty-prompt
+### 查询指定目录下所有的url
+  - init.geturl-config
 ### 关闭透明大页
   # Notice: can only be used to initialize a new server
   - init.transparent_hugepage
