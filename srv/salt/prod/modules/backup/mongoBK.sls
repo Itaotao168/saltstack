@@ -1,10 +1,10 @@
-#!/bin/bash
-backupday=`date +%Y-%m-%d`
-mkdir -p /data/backup/autoback/$backupday
-backdir=/data/backup/autoback/$backupday
-dbname=tps
-##删除7天前的备份
-find $backdir/ -mtime +7 |xargs -i rm -rf {}
-
-###备份数据库
-/usr/local/mongodb/bin/mongodump -d $dbname -o $backdir/
+mongoBK-file:
+  cmd.run:
+    - name: mkdir -p /opt/script
+    - unless: test -d /opt/script
+  file.managed:
+    - name: /opt/script/mongoBK.sh
+    - source: salt://modules/files/mongoBK.sh
+    - user: root
+    - group: root
+    - mode: 755
