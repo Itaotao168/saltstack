@@ -1,6 +1,6 @@
 {% set MONGODB_PATH='/data/mongodb' %}
 {% set MONGODB_VERSION='mongodb-linux-x86_64-3.0.6' %}
-mongo-install:
+mongo-install306:
   archive.extracted:
     - name: /usr/local/
     - source: salt://modules/files/{{ MONGODB_VERSION }}.tgz
@@ -14,9 +14,9 @@ mongo-install:
     - name: groupadd mongo | echo ok && useradd -g mongo -s /sbin/nologin mongo |echo ok && ln -s /usr/local/{{ MONGODB_VERSION }} /usr/local/mongodb && ln -s /usr/local/mongodb/bin/mongo /usr/bin/mongo|echo ok && chown -R mongo:mongo /usr/local/{{ MONGODB_VERSION }} /usr/local/mongodb
     - unless: test -d /usr/local/{{ MONGODB_VERSION }} && test -L /usr/local/mongodb
     - require:
-      - archive: mongo-install
+      - archive: mongo-install306
 
-mongo-config:
+mongo-config306:
   cmd.run:
     - name: mkdir -p {{ MONGODB_PATH }}/{logs,data} && chown -R mongo:mongo {{ MONGODB_PATH }}/{logs,data}
     - unless: test -d {{ MONGODB_PATH }}/data
@@ -30,10 +30,10 @@ mongo-config:
     - defaults: 
       MONGODB_PATH: {{ MONGODB_PATH }}
     - require:
-      - cmd: mongo-config
+      - cmd: mongo-config306
 
 
-mongo-service:
+mongo-service306:
   pkg.installed:
     - pkgs:
       - numactl 
@@ -42,16 +42,16 @@ mongo-service:
     - source: salt://modules/files/mongod.service.template
     - user: root
     - group: root
-    - mode: 644
+    - mode: 755
 
   service.running:
     - enable: True
     - reload: True
     - name: mongod
     - watch:
-      - file: mongo-service
+      - file: mongo-service306
     - require:
-      - cmd: mongo-install
-      - file: mongo-config
-      - file: mongo-service
-      - pkg: mongo-service
+      - cmd: mongo-install306
+      - file: mongo-config306
+      - file: mongo-service306
+      - pkg: mongo-service306

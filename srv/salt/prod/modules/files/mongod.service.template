@@ -7,7 +7,8 @@ After=syslog.target
 Type=forking
 User=mongo
 KillMode=process
-ExecStart=/usr/local/mongodb/bin/mongod -f /usr/local/mongodb/bin/mongodb.conf
+#ExecStart=/usr/local/mongodb/bin/mongod -f /usr/local/mongodb/bin/mongodb.conf
+ExecStart=/usr/bin/numactl --interleave=all /usr/local/mongodb/bin/mongod -f /usr/local/mongodb/bin/mongodb.conf
 ExecReload=/bin/kill -s HUP $MAINPID
 ExecStop=/usr/local/mongodb/bin/mongod --shutdown -f /usr/local/mongodb/bin/mongodb.conf
 PrivateTmp=true
