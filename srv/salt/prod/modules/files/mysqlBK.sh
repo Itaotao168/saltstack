@@ -3,7 +3,8 @@
 #
 # Example:
 # databases=('__DATABASE_1__' '__DATABASE_2__')
-databases=('gzurbsp' 'gncm')
+#databases=('gzurbsp' 'gncm')
+databases=('sys')
 
 # The host name of the MySQL database server; usually 'localhost'
 db_host="localhost"
@@ -35,7 +36,7 @@ find $backups_dir -mtime +7 -name "*.gz" -print0 |xargs -0 -i rm -f {}
 
 for db_name in ${databases[@]}; do
         # Create database backup and compress using gzip.
-        mysqldump -u $db_user -h $db_host -P $db_port --password=$db_pass $db_name | gzip -9 > $backups_dir$db_name-$datetime.sql.gz
+        /usr/local/mysql/bin/mysqldump -u $db_user -h $db_host -P $db_port --password=$db_pass $db_name | gzip -9 > $backups_dir$db_name-$datetime.sql.gz
 done
 
 # Set appropriate file permissions/owner.
